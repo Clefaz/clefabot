@@ -54,7 +54,7 @@ namespace ClefaBot
             FunCommands();
             CoreCommands();
             PurgeCommand();
-            DelallCommand();
+            DelCommand();
             //FinCommandes
 
             discord.ExecuteAndWait(async () =>              //Connexion
@@ -70,7 +70,9 @@ namespace ClefaBot
                 .Do(async (e) =>
                 {
                     string selectedMeme = dankMemes[rand.Next(dankMemes.Length)];
+                    await e.Channel.SendMessage(e.User.Mention);
                     await e.Channel.SendFile(selectedMeme);
+                    await e.Message.Delete();
                 });
 
             //  !love
@@ -85,40 +87,19 @@ namespace ClefaBot
         private void CoreCommands()
         {
             //  !test
-            Commands.CreateCommand("test")                 //Commande !Hello
+            Commands.CreateCommand("test")                 //Commande
                 .Do(async (e) =>
                 {
-                    await e.Channel.SendMessage("yup ! I'm here !");     //Repondre Hi!
+                    await e.Channel.SendMessage("It's working, " + e.User.Mention);     //Reponse
+                    await e.Message.Delete();
                 });
 
             //  !help
             Commands.CreateCommand("help")
                 .Do(async (e) =>
                 {
-                    await e.User.SendMessage("**HELP:**\n`AIDE ICI\nLOL`");
+                    await e.User.SendMessage("**HELP:**\n\n`!del <number> [user(s)] [role(s)]\n->supprime < number > messages envoyés par les[user(s)] ou[role(s)]\n\n!del all < force >\n->supprime les 100 derniers messages\n\n!purge\n->supprime les 100 derniers messages ne contenant pas:\n\t[!pres] pour le channel presentation\n\t[!aide] / [!requete] pour le channel aide_et_requete\n\n!test\n->reponds pour indiquer que le bot fonctionne\n\n!help\n->affiche cette page\n\n!meme\n->poste un meme random\n\n!love / !I love u / !I love you / !on baise / !je t'aime\n->reponds un message plein d'amour\n`\n\n*copyright by clefaz: http://clefaz.com*");
                     await e.Message.Delete();
-                });
-
-            //  !idea
-            Commands.CreateCommand("idea")
-                .Alias(new string[] { "idee" })
-                .Parameter("idea", ParameterType.Multiple)
-                .Do(async (e) =>
-                {
-                    string renvoi = e.Message.Text;
-
-                    renvoi = renvoi.Replace("!idee", "");
-                    renvoi = renvoi.Replace("!idea", "");
-
-                    await e.Channel.SendMessage("idée de " + e.User.Mention + " : " + renvoi);
-                    await e.Message.Delete();
-
-                    Message[] messagesReceived = await e.Channel.DownloadMessages(100);
-                    for (int i = 0; i < messagesReceived.Length; i++)
-                    {
-                        if (!messagesReceived.ElementAt(i).User.IsBot)
-                            await messagesReceived[i].Delete();
-                    }
                 });
         }
 
@@ -165,28 +146,8 @@ namespace ClefaBot
                 });
         }
 
-        private void DelallCommand()
+        private void DelCommand()
         {
-            //  !delall
-            Commands.CreateCommand("delall")
-              .Parameter("force", ParameterType.Optional)
-              .Do(async (e) =>
-              {
-                  //verification des permissions
-                  if (e.User.ServerPermissions.ManageMessages)
-                  {
-                      if (e.GetArg("force") == "force")
-                      {
-                          Message[] messagesReceived = await e.Channel.DownloadMessages(100);   //les 100 derniers messages
-                          await e.Channel.DeleteMessages(messagesReceived);
-                      }
-                      else
-                      {
-                          await e.Channel.SendMessage("Cette commande effacera les 100 derniers messages de ce channel, etes vous sur de vouloir les supprimer ?\n`!delall force`");
-                      }
-                  }
-              });
-
             //  !del
             Commands.CreateCommand("del")
               .Parameter("nombre", ParameterType.Multiple)
@@ -195,35 +156,95 @@ namespace ClefaBot
                   //verification des permissions
                   if (e.User.ServerPermissions.ManageMessages)
                   {
-                      Role[] Roles = new Role[e.Server.RoleCount];
-                      for (int i = 0; i < e.Server.RoleCount; i++)
-                      {
-                          Roles[i] = e.Server.Roles.ElementAt(i);
-                          Console.WriteLine(Roles[i].Name);
-                      }
+                      if (e.GetArg("nombre") == "?")
+                          await e.Channel.SendMessage("Commande:\n`!del <number> [user(s)] [role(s)]\n!del all <force>`");
+                      else { 
+                      int nombre = 0;
+                      int v = 0;
 
-
-
-                      //Debut de la fonction
-                      if (e.GetArg("nombre") == "all")
-                      {
-
-                      }
-                      else
-                      {
-                          int nombre;
                           if (Int32.TryParse(e.GetArg("nombre"), out nombre))
                           {
-                              Message[] messagesReceived = await e.Channel.DownloadMessages(nombre + 1);   //les 2 derniers messages
-                              await e.Channel.DeleteMessages(messagesReceived);
+                              Message[] messagesReceived = await e.Channel.DownloadMessages(100);   //charge les 100 derniers messages
+                              await e.Message.Delete();                                             //supprime le message de commande
+
+                              //
+                              foreach (User user in e.Message.MentionedUsers)                       //supprime les messages pour les utilisateurs mentionnés
+                              {
+                                  for (int i = 1; i < 100; i++)                                     //On parcours la liste
+                                  {
+                                      if (messagesReceived[i].User.Id == user.Id)                   //Si le message est envoyé par l'utilisateur mentionné
+                                      {
+                                          v++;                                                      //On supprime son message
+                                          Console.WriteLine("deleted " + v + " messages");          //
+                                      }
+                                      if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
+                                      {
+                                          v = 0;                                                    //reset v
+                                          break;                                                    //on arrete le for
+                                      }
+                                  }
+                              }
+
+                              //
+                              foreach (Role role in e.Message.MentionedRoles)                       //supprime les messages pour les utilisateurs mentionnés
+                              {
+                                  for (int i = 1; i < 100; i++)                                     //On parcours la liste
+                                  {
+                                      if (messagesReceived[i].User.HasRole(role))                   //Si le message est envoyé par l'utilisateur mentionné
+                                      {
+                                          v++;                                                      //On supprime son message
+                                          Console.WriteLine("deleted " + v + " messages");          //
+                                      }
+                                      if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
+                                      {
+                                          v = 0;                                                    //reset v
+                                          break;                                                    //on arrete le for
+                                      }
+                                  }
+                              }
+
+                              //
+                              if (e.Message.Text.Contains("link"))
+                              {
+                                  for (int i = 1; i < 100; i++)                                     //On parcours la liste
+                                  {
+                                      if (messagesReceived[i].Text.Contains("http") || messagesReceived[i].Text.Contains("https"))                   //Si le message contient un lien
+                                      {
+                                          v++;                                                      //On supprime le message
+                                          Console.WriteLine("deleted " + v + " messages");          //
+                                      }
+                                      if (v == nombre)                                              //apres avoir supprimé les x derniers messages avec un lien
+                                      {
+                                          v = 0;                                                    //reset v
+                                          break;                                                    //on arrete le for
+                                      }
+                                  }
+                              }
                           }
                           else
+                          {
                               Console.WriteLine("String could not be parsed.");
+                              if (e.GetArg("nombre") == "all")
+                              {
+                                  if (e.Message.Text.Contains("force"))
+                                  {
+                                      Message[] messagesReceived = await e.Channel.DownloadMessages(100);   //les 100 derniers messages
+                                      await e.Channel.DeleteMessages(messagesReceived);
+                                  }
+                                  else
+                                  {
+                                      await e.Channel.SendMessage(e.User.Mention + "Cette commande effacera les 100 derniers messages de ce channel, etes vous sur de vouloir les supprimer ?\n`!del all force`");
+                                  }
+                              }
+                              else
+                                  await e.Channel.SendMessage("Commande invalide, " + e.User.Mention + ", tapez !help pour obtenir une liste de commandes.");
+                          }
                       }
-                      //Fin de la fonction
                   }
-                  else
-                      await e.Channel.SendMessage("Cette commande effacera les x derniers messages de ce channel, etes vous sur de vouloir les supprimer ?\n`!del force`");
+                  else {
+                      await e.Channel.SendMessage("Désolé, " + e.User.Mention + ", mais tu n'a pas la permission d'utiliser cette commande");
+                  }
+                  await e.Message.Delete();
               });
         }
 
