@@ -1,0 +1,27 @@
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\ClefaBot.exe.config
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\ClefaBot.exe
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\ClefaBot.pdb
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Discord.Net.Commands.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Discord.Net.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Newtonsoft.Json.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Nito.AsyncEx.Concurrent.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Nito.AsyncEx.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Nito.AsyncEx.Enlightenment.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\RestSharp.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\WebSocket4Net.dll
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Newtonsoft.Json.xml
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Nito.AsyncEx.xml
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Nito.AsyncEx.Concurrent.xml
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\Nito.AsyncEx.Enlightenment.xml
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\RestSharp.xml
+D:\Projets Visual Studio\ClefaBot\ClefaBot\obj\Debug\ClefaBot.exe
+D:\Projets Visual Studio\ClefaBot\ClefaBot\obj\Debug\ClefaBot.pdb
+D:\Projets Visual Studio\ClefaBot\ClefaBot\obj\Debug\ClefaBot.csprojResolveAssemblyReference.cache
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (1).jpg
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (1).png
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (2).jpg
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (2).png
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (3).jpg
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (3).png
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (4).jpg
+D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Debug\DankMemes\ (4).png
