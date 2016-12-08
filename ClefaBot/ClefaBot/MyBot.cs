@@ -189,20 +189,38 @@ namespace ClefaBot
 
             //  !del
             Commands.CreateCommand("del")
-              .Parameter("nombre", ParameterType.Required)
+              .Parameter("nombre", ParameterType.Multiple)
               .Do(async (e) =>
               {
                   //verification des permissions
                   if (e.User.ServerPermissions.ManageMessages)
                   {
-                      int nombre;
-                      if (Int32.TryParse(e.GetArg("nombre"), out nombre))
+                      Role[] Roles = new Role[e.Server.RoleCount];
+                      for (int i = 0; i < e.Server.RoleCount; i++)
                       {
-                          Message[] messagesReceived = await e.Channel.DownloadMessages(nombre + 1);   //les 2 derniers messages
-                          await e.Channel.DeleteMessages(messagesReceived);
+                          Roles[i] = e.Server.Roles.ElementAt(i);
+                          Console.WriteLine(Roles[i].Name);
+                      }
+
+
+
+                      //Debut de la fonction
+                      if (e.GetArg("nombre") == "all")
+                      {
+
                       }
                       else
-                          Console.WriteLine("String could not be parsed.");
+                      {
+                          int nombre;
+                          if (Int32.TryParse(e.GetArg("nombre"), out nombre))
+                          {
+                              Message[] messagesReceived = await e.Channel.DownloadMessages(nombre + 1);   //les 2 derniers messages
+                              await e.Channel.DeleteMessages(messagesReceived);
+                          }
+                          else
+                              Console.WriteLine("String could not be parsed.");
+                      }
+                      //Fin de la fonction
                   }
                   else
                       await e.Channel.SendMessage("Cette commande effacera les x derniers messages de ce channel, etes vous sur de vouloir les supprimer ?\n`!del force`");

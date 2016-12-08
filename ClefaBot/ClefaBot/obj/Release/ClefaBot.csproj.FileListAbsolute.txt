@@ -52,3 +52,30 @@ C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito
 C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Enlightenment.xml
 C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\RestSharp.xml
 C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.csprojResolveAssemblyReference.cache
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\ClefaBot.exe.config
+D:\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.exe
+D:\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.pdb
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(1).jpg
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(1).png
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(2).jpg
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(2).png
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(3).jpg
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(3).png
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(4).jpg
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(4).png
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\ClefaBot.exe
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\ClefaBot.pdb
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Discord.Net.Commands.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Discord.Net.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Newtonsoft.Json.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Concurrent.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Enlightenment.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\RestSharp.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\WebSocket4Net.dll
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Newtonsoft.Json.xml
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.xml
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Concurrent.xml
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Enlightenment.xml
+D:\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\RestSharp.xml
+D:\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.csprojResolveAssemblyReference.cache
