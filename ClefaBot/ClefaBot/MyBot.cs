@@ -95,7 +95,30 @@ namespace ClefaBot
             Commands.CreateCommand("help")
                 .Do(async (e) =>
                 {
-                    await e.Channel.SendMessage("`**HELP :**\n-1. truc\n-2. truc`");
+                    await e.User.SendMessage("**HELP:**\n`AIDE ICI\nLOL`");
+                    await e.Message.Delete();
+                });
+
+            //  !idea
+            Commands.CreateCommand("idea")
+                .Alias(new string[] { "idee" })
+                .Parameter("idea", ParameterType.Multiple)
+                .Do(async (e) =>
+                {
+                    string renvoi = e.Message.Text;
+
+                    renvoi = renvoi.Replace("!idee", "");
+                    renvoi = renvoi.Replace("!idea", "");
+
+                    await e.Channel.SendMessage("idée de " + e.User.Mention + " : " + renvoi);
+                    await e.Message.Delete();
+
+                    Message[] messagesReceived = await e.Channel.DownloadMessages(100);
+                    for (int i = 0; i < messagesReceived.Length; i++)
+                    {
+                        if (!messagesReceived.ElementAt(i).User.IsBot)
+                            await messagesReceived[i].Delete();
+                    }
                 });
         }
 
@@ -129,10 +152,16 @@ namespace ClefaBot
                             }
                         }
                         else
+                        {
                             await e.Channel.SendMessage("Désolé, " + e.User.Mention + ", mais tu n'es pas dans le channel #presentation ou #aide_et_requete");
+                            await e.Message.Delete();
+                        }
                     }
                     else
+                    {
                         await e.Channel.SendMessage("Désolé, " + e.User.Mention + ", mais tu n'a pas la permission d'utiliser cette commande");
+                        await e.Message.Delete();
+                    }
                 });
         }
 
@@ -140,13 +169,13 @@ namespace ClefaBot
         {  
             //  !delall
             Commands.CreateCommand("delall")
-              .Alias(new string[] { "delall force" })
+              .Parameter("force", ParameterType.Optional)
               .Do(async (e) =>
               {
                   //verification des permissions
                   if (e.User.ServerPermissions.ManageMessages)
                   {
-                      if (e.Message.Text.Contains("force"))
+                      if (e.GetArg("force") == "force")
                       {
                           Message[] messagesReceived = await e.Channel.DownloadMessages(100);   //les 100 derniers messages
                           await e.Channel.DeleteMessages(messagesReceived);
