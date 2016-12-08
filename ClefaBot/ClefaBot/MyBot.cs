@@ -62,7 +62,7 @@ namespace ClefaBot
                 await discord.Connect("MjIzODAwNzY0NjY4MDUxNDU2.CyHxrQ.olu66-hEbTgZuAdwiang6EKSAuw", TokenType.Bot);
             });
         }
-        
+
         private void FunCommands()
         {
             //  !meme
@@ -166,7 +166,7 @@ namespace ClefaBot
         }
 
         private void DelallCommand()
-        {  
+        {
             //  !delall
             Commands.CreateCommand("delall")
               .Parameter("force", ParameterType.Optional)
@@ -185,6 +185,27 @@ namespace ClefaBot
                           await e.Channel.SendMessage("Cette commande effacera les 100 derniers messages de ce channel, etes vous sur de vouloir les supprimer ?\n`!delall force`");
                       }
                   }
+              });
+
+            //  !del
+            Commands.CreateCommand("del")
+              .Parameter("nombre", ParameterType.Required)
+              .Do(async (e) =>
+              {
+                  //verification des permissions
+                  if (e.User.ServerPermissions.ManageMessages)
+                  {
+                      int nombre;
+                      if (Int32.TryParse(e.GetArg("nombre"), out nombre))
+                      {
+                          Message[] messagesReceived = await e.Channel.DownloadMessages(nombre + 1);   //les 2 derniers messages
+                          await e.Channel.DeleteMessages(messagesReceived);
+                      }
+                      else
+                          Console.WriteLine("String could not be parsed.");
+                  }
+                  else
+                      await e.Channel.SendMessage("Cette commande effacera les x derniers messages de ce channel, etes vous sur de vouloir les supprimer ?\n`!del force`");
               });
         }
 
