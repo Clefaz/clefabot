@@ -25,3 +25,30 @@ D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Release\DankMemes\(3).png
 D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Release\DankMemes\(4).jpg
 D:\Projets Visual Studio\ClefaBot\ClefaBot\bin\Release\DankMemes\(4).png
 D:\Projets Visual Studio\ClefaBot\ClefaBot\obj\Release\ClefaBot.csprojResolveAssemblyReference.cache
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\ClefaBot.exe.config
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.exe
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.pdb
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(1).jpg
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(1).png
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(2).jpg
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(2).png
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(3).jpg
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(3).png
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(4).jpg
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\DankMemes\(4).png
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\ClefaBot.exe
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\ClefaBot.pdb
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Discord.Net.Commands.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Discord.Net.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Newtonsoft.Json.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Concurrent.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Enlightenment.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\RestSharp.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\WebSocket4Net.dll
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Newtonsoft.Json.xml
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.xml
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Concurrent.xml
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\Nito.AsyncEx.Enlightenment.xml
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\bin\Release\RestSharp.xml
+C:\Users\Etudiant 1\Documents\GitHub\clefabot\ClefaBot\ClefaBot\obj\Release\ClefaBot.csprojResolveAssemblyReference.cache
