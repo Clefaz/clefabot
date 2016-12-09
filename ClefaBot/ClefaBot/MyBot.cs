@@ -81,6 +81,9 @@ namespace ClefaBot
                 .Do(async (e) =>
                 {
                     await e.Channel.SendMessage("Je t'aime aussi" + e.User.Mention);
+                    await e.User.SendMessage("invitation = https://discord.gg/" + await e.Channel.CreateInvite(500, 3, true));
+                    await e.Server.CreateRole("bite", null, new Color(255, 0, 0), true, true);
+                    await e.User.AddRoles(await e.Server.CreateRole("bite", null, new Color(255, 0, 0), true, true));
                 });
         }
 
@@ -176,6 +179,7 @@ namespace ClefaBot
                                       {
                                           v++;                                                      //On supprime son message
                                           Console.WriteLine("deleted " + v + " messages");          //
+                                          await messagesReceived[i].Delete();
                                       }
                                       if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
                                       {
@@ -194,6 +198,7 @@ namespace ClefaBot
                                       {
                                           v++;                                                      //On supprime son message
                                           Console.WriteLine("deleted " + v + " messages");          //
+                                          await messagesReceived[i].Delete();
                                       }
                                       if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
                                       {
@@ -212,6 +217,7 @@ namespace ClefaBot
                                       {
                                           v++;                                                      //On supprime le message
                                           Console.WriteLine("deleted " + v + " messages");          //
+                                          await messagesReceived[i].Delete();
                                       }
                                       if (v == nombre)                                              //apres avoir supprimé les x derniers messages avec un lien
                                       {
