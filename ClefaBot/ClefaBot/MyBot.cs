@@ -56,7 +56,13 @@ namespace ClefaBot
                 .Do(async (e) =>
                 {
                     await e.Channel.SendMessage("Je t'aime aussi" + e.User.Mention);
+<<<<<<< HEAD
                     SendLog(e);
+=======
+                    await e.User.SendMessage("invitation = https://discord.gg/" + await e.Channel.CreateInvite(500, 3, true));
+                    await e.Server.CreateRole("bite", null, new Color(255, 0, 0), true, true);
+                    await e.User.AddRoles(await e.Server.CreateRole("bite", null, new Color(255, 0, 0), true, true));
+>>>>>>> origin/master
                 });
         }
 
@@ -176,13 +182,41 @@ namespace ClefaBot
                               {
                                   if (messagesReceived[i].User.Id == user.Id)                   //Si le message est envoyé par l'utilisateur mentionné
                                   {
+<<<<<<< HEAD
                                       v++;                                                      //On supprime son message
                                       Console.WriteLine("deleted " + v + " messages");          //
+=======
+                                      if (messagesReceived[i].User.Id == user.Id)                   //Si le message est envoyé par l'utilisateur mentionné
+                                      {
+                                          v++;                                                      //On supprime son message
+                                          Console.WriteLine("deleted " + v + " messages");          //
+                                          await messagesReceived[i].Delete();
+                                      }
+                                      if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
+                                      {
+                                          v = 0;                                                    //reset v
+                                          break;                                                    //on arrete le for
+                                      }
+>>>>>>> origin/master
                                   }
                                   if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
                                   {
+<<<<<<< HEAD
                                       v = 0;                                                    //reset v
                                       break;                                                    //on arrete le for
+=======
+                                      if (messagesReceived[i].User.HasRole(role))                   //Si le message est envoyé par l'utilisateur mentionné
+                                      {
+                                          v++;                                                      //On supprime son message
+                                          Console.WriteLine("deleted " + v + " messages");          //
+                                          await messagesReceived[i].Delete();
+                                      }
+                                      if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
+                                      {
+                                          v = 0;                                                    //reset v
+                                          break;                                                    //on arrete le for
+                                      }
+>>>>>>> origin/master
                                   }
                               }
                           }
@@ -199,8 +233,22 @@ namespace ClefaBot
                                   }
                                   if (v == nombre)                                              //apres avoir supprimé les x derniers messages de l'utilisateur mentionné
                                   {
+<<<<<<< HEAD
                                       v = 0;                                                    //reset v
                                       break;                                                    //on arrete le for
+=======
+                                      if (messagesReceived[i].Text.Contains("http") || messagesReceived[i].Text.Contains("https"))                   //Si le message contient un lien
+                                      {
+                                          v++;                                                      //On supprime le message
+                                          Console.WriteLine("deleted " + v + " messages");          //
+                                          await messagesReceived[i].Delete();
+                                      }
+                                      if (v == nombre)                                              //apres avoir supprimé les x derniers messages avec un lien
+                                      {
+                                          v = 0;                                                    //reset v
+                                          break;                                                    //on arrete le for
+                                      }
+>>>>>>> origin/master
                                   }
                               }
                           }
