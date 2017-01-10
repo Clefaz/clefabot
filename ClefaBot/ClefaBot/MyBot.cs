@@ -56,13 +56,7 @@ namespace ClefaBot
                 .Do(async (e) =>
                 {
                     await e.Channel.SendMessage("Je t'aime aussi" + e.User.Mention);
-<<<<<<< HEAD
                     SendLog(e);
-=======
-                    await e.User.SendMessage("invitation = https://discord.gg/" + await e.Channel.CreateInvite(500, 3, true));
-                    await e.Server.CreateRole("bite", null, new Color(255, 0, 0), true, true);
-                    await e.User.AddRoles(await e.Server.CreateRole("bite", null, new Color(255, 0, 0), true, true));
->>>>>>> origin/master
                 });
         }
 
