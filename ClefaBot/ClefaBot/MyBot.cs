@@ -35,7 +35,8 @@ namespace ClefaBot
 
             //Declaration des commandes
             FunCommands();
-            CoreCommands();
+            TestCommands();
+            SetupCommands();
             DelAnyCommand();
             /*
             PurgeCommand();
@@ -52,7 +53,8 @@ namespace ClefaBot
         {
             //  !love
             Commands.CreateCommand("I love u")
-                .Alias(new string[] { "je t'aime", "love", "i love you", "on baise" })
+                .Alias(new string[] { "je t'aime", "love", "i love you", "on baise", "on baise ?", "NTM", "PD", "EZ" })
+                .Parameter("ez", ParameterType.Multiple)
                 .Do(async (e) =>
                 {
                     await e.Channel.SendMessage("Je t'aime aussi" + e.User.Mention);
@@ -60,7 +62,7 @@ namespace ClefaBot
                 });
         }
 
-        private void CoreCommands()
+        private void TestCommands()
         {
             //  !test
             Commands.CreateCommand("test")                 //Commande
@@ -75,10 +77,27 @@ namespace ClefaBot
             Commands.CreateCommand("help")
                 .Do(async (e) =>
                 {
-                    await e.User.SendMessage("**HELP:**\n\n`!del <number> [user(s)] [role(s)]\n->supprime < number > messages envoyés par les[user(s)] ou[role(s)]\n\n!del all < force >\n->supprime les 100 derniers messages\n\n!purge\n->supprime les 100 derniers messages ne contenant pas:\n\t[!pres] pour le channel presentation\n\t[!aide] / [!requete] pour le channel aide_et_requete\n\n!test\n->reponds pour indiquer que le bot fonctionne\n\n!help\n->affiche cette page\n\n!meme\n->poste un meme random\n\n!love / !I love u / !I love you / !on baise / !je t'aime\n->reponds un message plein d'amour\n`\n\n*copyright by clefaz: http://clefaz.com*");
+                    await e.User.SendMessage("**HELP:**\n\n```!delany < number >\n->supprime < number > derniers messages envoyés dans ce salon\n\n!test\n->reponds pour indiquer que le bot fonctionne\n\n!help\n->affiche cette page\n\n!love / !I love u / !I love you / !on baise / !je t'aime\n->reponds un message plein d'amour\n```\n*copyright by clefaz: http://clefaz.com*");
                     await e.Message.Delete();
                     SendLog(e);
                 });
+        }
+
+        private void SetupCommands()
+        {
+            //  !setplaying
+            Commands.CreateCommand("setplaying")
+              .Parameter("text", ParameterType.Multiple)
+              .Do(async (e) =>
+              {
+                  await e.Message.Delete();
+                  if (Permissions(e, 6) == true && HelpMessage(e, "Commande:\n`!setplaying text`") == false)
+                  {
+                      this.discord.SetGame(e.Message.Text.Remove(0,12).ToString());
+                      SendLog(e);
+                      //Fin de la commande
+                  }
+              });
         }
 
         private void DelAnyCommand()
@@ -89,7 +108,7 @@ namespace ClefaBot
               .Do(async (e) =>
               {
                   await e.Message.Delete();
-                  if (Permissions(e, 5) == true && HelpMessage(e, "Commande:\n`!del <number> [user(s)] [role(s)]\n!del all <force>`") == false)
+                  if (Permissions(e, 5) == true && HelpMessage(e, "Commande:\n`!delany <number (max = 100)>`") == false)
                   {
                       //Debut de la commande
                       int nombre = 0;
@@ -105,6 +124,7 @@ namespace ClefaBot
                   }
               });
         }
+
 
         /*
         private void PurgeCommand()
@@ -292,8 +312,10 @@ namespace ClefaBot
         //Fonctions pour les commandes
         private bool Permissions(CommandEventArgs _e, int _level)
         {
-            if (_level >= 5)    //5 = managemessages
-                if (_e.User.ServerPermissions.ManageMessages == true)
+            if (_level >= 6 && _e.User.ServerPermissions.ManageRoles == true)
+                    return true;
+                else
+            if (_level >= 5 && _e.User.ServerPermissions.ManageMessages == true)
                     return true;
                 else
                     _e.Channel.SendMessage("Désolé, " + _e.User.Mention + ", mais tu n'a pas la permission d'utiliser cette commande");
